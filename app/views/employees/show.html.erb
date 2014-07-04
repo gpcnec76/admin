@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @employee.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @employee.last_name %>
+</p>
+
+<hr />
+
+<h2>Designations</h2>
+
+<% @employee.designations.each do |designation| %>
+
+<p>
+
+	<strong>Interface</strong>
+	<%=designation.interface%>
+</p>
+
+<% end %>
+
+<hr />
+
+<%= form_for ([@employee, @employee.designations.build ]) do |f| %> 
+
+<p> 
+
+ <%= f.label :interface %> <br/> 
+ <%= f.text_field :interface %> 
+
+</p> 
+
+<p> 
+ <%= f.submit %> 
+</p> 
+
+<% end %>
+
+<hr />
+
+<%= link_to 'Edit', edit_employee_path(@employee) %> |
+<%= link_to 'Back', employees_path %>

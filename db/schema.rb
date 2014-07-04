@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140620025032) do
+ActiveRecord::Schema.define(version: 20140630040143) do
+
+  create_table "designations", force: true do |t|
+    t.string   "interface"
+    t.datetime "date"
+    t.integer  "employee_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "designations", ["employee_id"], name: "index_designations_on_employee_id", using: :btree
+
+  create_table "employees", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
